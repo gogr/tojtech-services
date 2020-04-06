@@ -1,19 +1,6 @@
 version: "3"
 
 services:
-  jenkins:
-    image: "jenkins/jenkins:lts"
-    network_mode: bridge
-    restart: always
-    environment:
-      - TZ=America/New_York
-    ports:
-      - "80:8080"
-      - "50000:50000"
-    volumes:
-      - "$PWD/jenkins:/var/jenkins_home"
-      - "/var/run/docker.sock:/var/run/docker.sock"
-
   db:
     image: "mysql:latest"
     command: --default-authentication-plugin=mysql_native_password
