@@ -27,3 +27,6 @@ services:
     ports:
       - "4445:8080"
     command: ["--selenoid-uri", "http://selenoid:4444"]
+    volumes:
+      - "$PWD:/etc/selenoid-ui/" # assumed current dir contains browsers.json
+      - "/var/run/docker.sock:/var/run/docker.sock"
