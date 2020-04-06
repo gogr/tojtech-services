@@ -1,33 +1,6 @@
 version: "3"
 
 services:
-  selenoid:
-    image: "aerokube/selenoid:latest"
-    restart: always
-    network_mode: bridge
-    environment:
-      - TZ=America/New_York
-    ports:
-      - "4444:4444"
-    command: ["-retry-count", "5", "-limit", "${CONCURRENT_SESSIONS:-7}"]
-    volumes:
-      - "$PWD:/etc/selenoid/" # assumed current dir contains browsers.json
-      - "/var/run/docker.sock:/var/run/docker.sock"
-
-  selenoid-ui:
-    image: "aerokube/selenoid-ui:latest"
-    network_mode: bridge
-    restart: always
-    environment:
-      - TZ=America/New_York
-    depends_on:
-      - selenoid
-    links:
-      - selenoid
-    ports:
-      - "4445:8080"
-    command: ["--selenoid-uri", "http://selenoid:4444"]
-
   jenkins:
     image: "jenkins/jenkins:lts"
     network_mode: bridge

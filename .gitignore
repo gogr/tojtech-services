@@ -2,5 +2,7 @@
 **.iml
 /cm
 /cm.exe
+selenoid/cm
+selenoid/cm.exe
 /mysql/
 /jenkins/
