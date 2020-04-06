@@ -20,8 +20,6 @@ services:
     restart: always
     environment:
       - TZ=America/New_York
-    depends_on:
-      - selenoid
     links:
       - selenoid
     ports:
